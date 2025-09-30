@@ -1,22 +1,20 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import { Container } from 'react-bootstrap'
 import ContactmeCom from '../../Contactme/ContactmeCom'
 
 const Contactme = () => {
   return (
-    
-      <motion.div
-   
-  initial={{ scale: 0  , opacity:0, rotate:180 }}
-  animate={{ scale: 1, rotate: 360 , opacity:1 }}
-  transition={{ duration: 2, ease: "easeInOut" }}
+    <div className='h-screen w-screen overflow-auto flex justify-center'>
+ <motion.div
+  className="flex items-center m-5"
+  initial={{ scale: -5, opacity: 0, rotate: 180 }}
+  animate={{ scale: 1, rotate: 360, opacity: 100 }}
+  transition={{ duration: 4, ease: "easeInOut" }}
 >
-        
-            <ContactmeCom/>
+  <ContactmeCom />
 </motion.div>
-    
+</div>
   )
 }
 
-export default Contactme
+export default Contactme;

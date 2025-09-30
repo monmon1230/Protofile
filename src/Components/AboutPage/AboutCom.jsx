@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import Box from "./Box";
 import graduate from "../../Images/graduate.png";
 import bagoftools from "../../Images/bagoftools.png";
@@ -9,12 +9,15 @@ import cv from "../../assets/MinaMagdy.pdf";
 
 const AboutCom = () => {
   return (
-    <motion.div initial={{scale:0,rotate:180}} animate={{scale:1, rotate:360}} transition={{duration:2}}
+    <motion.div
+      initial={{ scale: 0, rotate: 180 }}
+      animate={{ scale: 1, rotate: 360 }}
+      transition={{ duration: 2 }}
       className="w-full max-w-2xl  
                 bg-gradient-to-br from-blue-50 to-white 
                 border-blue-900 border-2 
-                rounded-3xl shadow-lg mx-auto 
-                p-4 flex flex-col items-center overflow-hidden"
+                rounded-3xl shadow-lg 
+                p-4 flex flex-col items-center"
     >
       <motion.div
         className="w-full"
@@ -27,49 +30,61 @@ const AboutCom = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-blue-800">
             About Me
           </h2>
-          <p className="text-gray-700 mt-2 text-sm md:text-base">
-            My skills include HTML, CSS, JavaScript, Tailwind, Redux.
-          </p>
+
         </div>
 
         {/* البوكسات */}
-        <div className="flex flex-wrap justify-center gap-4 mt-4">
-          <Box
-            src={graduate}
-            style="bg-blue-200 w-28 h-20 md:w-32 md:h-24 rounded-lg flex flex-col items-center justify-center shadow-md p-2"
-            title="Engineering"
-          />
-          <Box
-            src={bagoftools}
-            style="bg-red-200 w-28 h-20 md:w-32 md:h-24 rounded-lg flex flex-col items-center justify-center shadow-md p-2 "
-            title="FrontEnd"
-          />
+        <div className="flex flex-wrap justify-around gap-8 mt-4">
+          <motion.div
+           
+            whileHover={{ scale: 1.5 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <Box
+              src={graduate}
+              style="bg-blue-200 w-28 h-20 md:w-32 md:h-24 rounded-lg flex flex-col items-center justify-center shadow-md p-2"
+              title="Engineering"
+            />
+          </motion.div>
+          <motion.div
+           
+            whileHover={{ scale: 1.5 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <Box
+              src={bagoftools}
+              style="bg-red-200 w-28 h-20 md:w-32 md:h-24 rounded-lg flex flex-col items-center justify-center shadow-md p-2 "
+              title="FrontEnd"
+            />
+          </motion.div>
         </div>
 
         {/* Skills */}
-        <div className="mt-4">
+        <div className="mt-2">
           <h3 className="text-blue-900 font-semibold mb-2 text-lg">Skills :</h3>
-     <div  className="flex flex-wrap justify-between gap-2">
+          <div className="flex flex-wrap justify-center-safe gap-4">
             {[
               { name: "React", color: "bg-blue-500" },
               { name: "TailwindCSS", color: "bg-cyan-500" },
               { name: "HTML", color: "bg-orange-400" },
               { name: "JavaScript", color: "bg-yellow-400" },
               { name: "Redux-toolkit", color: "bg-green-400" },
+              { name: "bootstrap", color: "bg-orange-300" },
             ].map((skill, i) => (
-                       <motion.div 
-            className="cursor-pointer"
-            whileHover={{ scale: 1.5 }} // 👈 هنا الكارد هيكبر 5% عن حجمه
-            transition={{ type: "spring", stiffness: 100 }}
-          >
-              <span
-                key={i}
-                className={`${skill.color} text-white px-4 py-2 rounded-full text-xs font-medium shadow-md`}
+              <motion.div
+                className="cursor-pointer"
+                whileHover={{ scale: 1.5 }} // 👈 هنا الكارد هيكبر 5% عن حجمه
+                transition={{ type: "spring", stiffness: 100 }}
               >
-          {skill.name}
-              </span></motion.div>  
+                <span
+                  key={i}
+                  className={`${skill.color} text-white px-4 py-2 rounded-full text-xs font-medium shadow-md`}
+                >
+                  {skill.name}
+                </span>
+              </motion.div>
             ))}
-         </div>
+          </div>
         </div>
 
         {/* الأزرار */}

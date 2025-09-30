@@ -1,75 +1,88 @@
-import React, { useState } from "react"
-import { Container, Navbar } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import mon from'../../Images/mon2.jpg'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Dimentions } from '../../constants/dimensions';
 
+const NavBar = ({ activeLink, handleClick }) => {
+  const [open, setOpen] = useState(false);
 
-const NavBar = () => {
-  // 🔴 state علشان نخزن اللينك النشط
-  const [activeLink, setActiveLink] = useState("")
-
-  // دالة تغيير اللينك النشط
-  const handleClick = (linkName) => {
-    setActiveLink(linkName)
-  }
+  const navLinks = [
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+    { to: "/projects", label: "Projects" },
+  ];
 
   return (
-    <div>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          {/* اللوجو */}
-          <Link to="/" className="d-flex justify-around cursor-pointer !no-underline">
-            <div className="text-xl font-bold cursor-pointer !no-underline text-red-500">My protofile</div>
-            <div>
-              <img
-                className="w-10 h-10 border-2 border-blue-800 rounded-full"
-                src={mon}
-                alt="notFound"
-              />
-            </div>
-          </Link>
+    <nav className={`w-full bg-white shadow-md px-6 py-3 fixed top-0 left-0 z-50 h-[${Dimentions.navHeight}]`}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-red-500 !no-underline "> <Link to='/'>MyPortfolio</Link></div>
 
-          <div className="ms-auto">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <div className="d-flex justify-content-around w-400" style={{ maxWidth: "300px" }}>
-                
-                <Link
-                  to="/about"
-                  onClick={() => handleClick("about")}
-                  className={`px-2 no-underline ${
-                    activeLink === "about" ? "!text-red-500 font-bold !no-underline" : "text-black !no-underline"
-                  }`}
-                >
-                  About
-                </Link>
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex gap-6 items-center">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => handleClick(link.label.toLowerCase())}
+              className={`px-2 transition duration-300 !no-underline ${
+                activeLink === link.label.toLowerCase()
+                  ? "text-red-500 font-bold"
+                  : "text-black hover:text-red-400"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
 
-                <Link
-                  to="/contact"
-                  onClick={() => handleClick("contact")}
-                  className={`px-2 no-underline ${
-                    activeLink === "contact" ? "!text-red-500 font-bold !no-underline" : "text-black !no-underline"
-                  }`}
-                >
-                  Contact
-                </Link>
+        {/* Mobile Toggle */}
+        <button
+          className="lg:hidden text-2xl text-red-500"
+          onClick={() => setOpen(!open)}
+        >
+          ☰
+        </button>
+      </div>
 
-                <Link
-                  to="/projects"
-                  onClick={() => handleClick("projects")}
-                  className={`px-2 !no-underline ${
-                    activeLink === "projects" ? "!text-red-500 font-bold !no-underline" : "text-black !no-underline"
-                  }`}
-                >
-                  Projects
-                </Link>
-              </div>
-            </Navbar.Collapse>
-          </div>
-        </Container>
-      </Navbar>
-    </div>
-  )
-}
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            className="fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 flex flex-col gap-6 z-50"
+          >
+            <button
+              className="self-end text-xl text-red-500 mb-6"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </button>
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => {
+                  handleClick(link.label.toLowerCase());
+                  setOpen(false);
+                }}
+                className={`transition duration-300 ${
+                  activeLink === link.label.toLowerCase()
+                    ? "text-red-500 font-bold"
+                    : "text-black hover:text-red-400"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
 
-export default NavBar
+export default NavBar;

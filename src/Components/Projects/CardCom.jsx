@@ -5,11 +5,12 @@ import { motion } from "framer-motion"; // 👈 استدعاء Framer Motion
 
 const CardCom = ({ img, Title, to }) => {
   return (
+   
     <motion.div
       whileHover={{ scale: 1.08 }}   // 👈 هنا الكارد هيكبر 5% عن حجمه
       transition={{ type: "spring", stiffness: 100 }} // 👈 حركة ناعمة
     >
-      <Card className="h-100 shadow-lg rounded-lg overflow-hidden">
+      <Card className="h-100 shadow-lg rounded-lg ">
         <Card.Img
           variant="top"
           className="img-fluid object-cover"
@@ -27,6 +28,7 @@ const CardCom = ({ img, Title, to }) => {
         </Card.Body>
       </Card>
     </motion.div>
+  
   );
 };
 
