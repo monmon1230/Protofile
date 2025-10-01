@@ -37,7 +37,7 @@ const ImageCom = () => {
       <motion.img
         src={img}
         alt="not found"
-        className="h-60 w-60 md:h-80 md:w-80 border-4 border-white  rounded-full object-cover shadow-lg p-1"
+        className="h-40 w-40 md:h-60 md:w-60 border-4 border-white   rounded-full object-cover shadow-lg p-1"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1,rotateX: rotateX,rotateY:rotateY }}
         transition={{ duration: 5,type: "spring", stiffness: 300, damping: 20  }}
@@ -63,7 +63,7 @@ const ImageCom = () => {
         </p>
 
         {/* الأزرار */}
-        <div className="mt-4 flex flex-wrap gap-4 justify-center">
+        <div className="mt-4 flex flex-wrap gap-2 justify-center  mb-4">
           <Link to="/projects">
             <Button className="px-4 py-2 text-lg bg-blue-600 hover:bg-blue-700 text-white shadow-md">
               View Projects

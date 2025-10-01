@@ -31,7 +31,7 @@ const AboutPage = () => {
     </motion.div>
   </Col>
 </Row>
-        <Row className="flex justify-center items-center mt-4">
+        <Row className="flex justify-center items-center mt-4 p-2 mb-4 mr-2">
           <Col className="flex justify-center  ">
             <AboutCom />
           </Col>
