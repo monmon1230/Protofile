@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <div className='w-screen h-screen p-2 bg-gradient-to-br from-blue-900 via-black to-red-900'>
+      <div className='w-screen h-screen p-2 bg-gradient-to-br from-blue-900 via-black to-red-900'>
       <BrowserRouter basename="/Protofile">
         <NavBar activeLink={activeLink} handleClick={handleClick} />
         <div className={`mt-[${Dimentions.navHeight}]`}>

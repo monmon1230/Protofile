@@ -16,21 +16,21 @@ const NavBar = ({ activeLink, handleClick }) => {
         <div className="hidden lg:flex gap-6 items-center justify-center">
           <Link to="/about" onClick={() => handleClick("about")}
             className={`px-2 transition duration-300 !no-underline ${
-              activeLink === "about" ? "text-red-500 font-bold" : "text-black hover:text-red-400"
+              activeLink === "about" ? "text-red-500 font-bold" : "text-red-500 hover:text-black"
             }`}>
             About
           </Link>
 
           <Link to="/contact" onClick={() => handleClick("contact")}
             className={`px-2 transition duration-300 !no-underline ${
-              activeLink === "contact" ? "text-red-500 font-bold" : "text-black hover:text-red-400"
+              activeLink === "contact" ? "text-red-500 font-bold" : "text-red-500 hover:text-black"
             }`}>
             Contact
           </Link>
 
           <Link to="/projects" onClick={() => handleClick("projects")}
             className={`px-2 transition duration-300 !no-underline ${
-              activeLink === "projects" ? "text-red-500 font-bold" : "text-black hover:text-red-400"
+              activeLink === "projects" ? "text-red-500 font-bold" : "text-red-500 hover:text-black"
             }`}>
             Projects
           </Link>
