@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import HomePage from './Components/HomePage/Pages/HomePage'
 import { Route, BrowserRouter, Routes, HashRouter } from 'react-router'
@@ -13,12 +13,18 @@ import { Dimentions } from './constants/dimensions'
 
 function App() {
 
+     const [activeLink, setActiveLink] = useState("home");
+
+  const handleClick = (link) => {
+    setActiveLink(link);
+  };
+
 
   return (
    <div className=' w-screen h-screen  p-2  bg-gradient-to-br from-blue-900 via-black to-red-900'>
   
 <BrowserRouter basename="/Protofile/">
-  <NavBar />
+  <NavBar activeLink={activeLink} handleClick={handleClick} />
   <div className={`mt-[${Dimentions.navHeight}]`}>
     <Routes>
       <Route path="/" element={<HomePage />} />
