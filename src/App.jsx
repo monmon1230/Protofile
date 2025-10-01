@@ -17,7 +17,7 @@ function App() {
   return (
    <div className=' w-screen h-screen  p-2  bg-gradient-to-br from-blue-900 via-black to-red-900'>
   
-<HashRouter basename="/Protofile">
+<HashRouter>
  <NavBar/>
  <div className={`mt-[${Dimentions.navHeight}]`}>
 <Routes>
